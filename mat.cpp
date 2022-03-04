@@ -4,18 +4,17 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
-#include <array>
+#include <vector>
 using namespace std;
 
 
 // Function to return the created mat for the factory :)
 string print_mat(int col, int row, char symbol_a, char symbol_b) {
     // Initalizing counters for tracking rows and columns
-    int row_counter = 0, col_counter = 0;
-    // Creating a copy of the row,col value for creating the final mat
-	int row_copy = row, col_copy = col;
-    // Initializing a 2D array to serve as the mat we are creating for the factory
-    char mat[row][col];
+    int row_counter = 0;
+    int col_counter = 0;
+    // Initializing a 2D array using vectors to serve as the mat we are creating for the factory
+	vector<vector<char>> mat(row, vector<char> (col));
     // The symbols are alternating, so we start we the first symbol to alternate them every "round"
     char current_symbol = symbol_a;
     while (row_counter < row && col_counter < col) {
@@ -59,8 +58,8 @@ string print_mat(int col, int row, char symbol_a, char symbol_b) {
 
     string result;
     // Print the filled matrix
-    for (int i = 0; i < row_copy; i++) {
-         for (int j = 0; j < col_copy; j++) {
+    for (int i = 0; i < mat.size(); i++) {
+         for (int j = 0; j < mat[i].size(); j++) {
            	result += mat[i][j];
           }
             result += "\n";
