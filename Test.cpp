@@ -81,6 +81,7 @@ TEST_CASE("Good input") {
 	
  	CHECK(nospaces(mat(1, 1, ':', '!')) == nospaces(":"));
  	
+
  	
  	
 	CHECK(nospaces(mat(9, 7, '|', '-')) == nospaces("|||||||||\n\
@@ -231,6 +232,21 @@ TEST_CASE("Row data type input test") {
     CHECK_THROWS(mat(1, -23, '^', '$'));
     CHECK_THROWS(mat(9, 0, '!', '?'));
     CHECK_THROWS(mat(31, -11, '(', '%'));
+}
+
+
+// Mat should be made out of symbols, not letters or numbers
+TEST_CASE("Mat material test") {
+    CHECK_THROWS(mat(5, 7, 'a', '%')); 
+    CHECK_THROWS(mat(1, 11, '5', '@'));
+    CHECK_THROWS(mat(9, 3, 'O', 'K'));
+    CHECK_THROWS(mat(3, 5, '!', '2'));
+    CHECK_THROWS(mat(5, 9, 'C', '%'));
+    CHECK_THROWS(mat(21, 13, 'L', '%')); 
+    CHECK_THROWS(mat(3, 5, '&', 'S'));
+    CHECK_THROWS(mat(1, 3, '^', '5'));
+    CHECK_THROWS(mat(9, 9, '1', '?'));
+    CHECK_THROWS(mat(21, 11, '(', 'Z'));
 }
 
 

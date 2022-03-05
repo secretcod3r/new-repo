@@ -5,6 +5,8 @@
 #include <string>
 #include <stdexcept>
 #include <vector>
+#include <cctype>
+
 using namespace std;
 
 
@@ -77,6 +79,9 @@ int input_check(int col, int row, char symbol_a, char symbol_b) {
     if (col < 0 || row < 0) {
         return 0;
     }
+    if (isalnum(symbol_a) != 0 || isalnum(symbol_b) != 0) {
+    	return 0;
+    }
 
     return 1; // Input is valid!
 }
@@ -88,7 +93,7 @@ namespace ariel {
         	return print_mat(col, row, symbol_a, symbol_b);
         }
         	
-        throw std::invalid_argument("ERROR: Invalid input to print mat!\n Rows and Cols should be odd numbers.");
+        throw std::invalid_argument("ERROR: Invalid input to print mat!\n - Rows and Cols should be odd numbers.\n - Mat should be made of symbols, not numbers or letters.");
         
     }
 }
